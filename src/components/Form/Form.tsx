@@ -30,13 +30,13 @@ export const Form: React.FC<Props> = ({ usersForSelect, addTodo, todoId }) => {
   const onAdd = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setErrorInput(!title ? 'Please enter a title' : '');
-    setErrorSelct(!select ? 'Please choose a user' : '');
+    setErrorSelct(select === '0' ? 'Please choose a user' : '');
 
-    if (!title || !select) {
+    if (!title || select === '0') {
       return;
     }
 
-    const user = usersForSelect.find(el => el.name === select)!;
+    const user = usersForSelect.find(selectUser => selectUser.name === select)!;
 
     const newTodo = {
       id: todoId + 1,

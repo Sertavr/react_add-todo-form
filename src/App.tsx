@@ -26,7 +26,8 @@ const todos = prepareTodos(todosFromServer, usersFromServer);
 
 export const App = () => {
   const [todoList, setTodoList] = useState(todos);
-  const maxIdTodo = Math.max(...todoList.map(todo => todo.id));
+  const maxIdTodo =
+    todoList.length !== 0 ? Math.max(...todoList.map(todo => todo.id)) : 0;
 
   const addTodo = (todoForUser: Todo) =>
     setTodoList(prevTodo => [...prevTodo, { ...todoForUser }]);
